@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Network</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Left Sidebar: Users -->
+      <aside class="sidebar glass">
+        <div class="logo">
+          <h2>🌌 Connect</h2>
+        </div>
+        
+        <div class="user-selector">
+          <h3>Active User</h3>
+          <div style="display:flex; gap:8px; margin-bottom:16px;">
+            <select id="currentUserSelect" style="margin-bottom:0;"></select>
+            <button id="deleteUserBtn" class="btn secondary" style="padding:0 12px; border-color:#ef4444; color:#ef4444;" title="Delete Profile">🗑️</button>
+          </div>
+          
+          <h3 style="margin-top:16px; margin-bottom:8px; font-size:1rem;">🔗 Connect with User</h3>
+          <div style="display:flex; gap:8px;">
+            <select id="globalAddFriendSelect" style="margin-bottom:0;"></select>
+            <button id="globalAddFriendBtn" class="btn primary" style="padding:0 12px;" title="Add Friend">Add</button>
+          </div>
+        </div>
+
+        <div class="register-panel glass-panel" style="margin-bottom:24px; padding:16px;">
+          <h3 style="margin-bottom:8px; font-size:1rem;">➕ Register User</h3>
+          <input type="text" id="regUsername" placeholder="Username (no spaces)" style="width:100%; padding:8px; margin-bottom:8px; background:rgba(0,0,0,0.2); border:1px solid var(--glass-border); border-radius:6px; color:white; outline:none; font-family:'Outfit';" />
+          <input type="text" id="regDisplay" placeholder="Display Name" style="width:100%; padding:8px; margin-bottom:12px; background:rgba(0,0,0,0.2); border:1px solid var(--glass-border); border-radius:6px; color:white; outline:none; font-family:'Outfit';" />
+          <button id="registerBtn" class="btn primary" style="width:100%; padding:8px;">Register</button>
+        </div>
+
+        <h3>All Users & Network</h3>
+        <ul id="usersList" class="users-list"></ul>
+      </aside>
+
+      <!-- Center: Feed -->
+      <main class="feed-container glass">
+        <header class="feed-header">
+          <h2 id="feedTitle">Home Feed</h2>
+        </header>
+
+        <div class="create-post glass-panel">
+          <textarea id="postInput" placeholder="What's on your mind?"></textarea>
+          <button id="postBtn" class="btn primary">Post to Timeline</button>
+        </div>
+
+        <div id="feedList" class="feed-list">
+          <!-- Posts go here -->
+        </div>
+      </main>
+
+      <!-- Right Sidebar: Insights & Recommendations -->
+      <aside class="insights glass">
+        <div class="panel">
+          <h3>💡 Friend Recommendations</h3>
+          <p class="subtitle">Based on mutual connections</p>
+          <ul id="recommendationsList" class="recs-list"></ul>
+        </div>
+
+        <div class="panel">
+          <h3>🕸️ Degrees of Separation</h3>
+          <p class="subtitle">Find shortest BFS path</p>
+          <div class="path-form">
+            <select id="pathTargetSelect"></select>
+            <button id="pathBtn" class="btn secondary">Find Path</button>
+          </div>
+          <div id="pathResult" class="path-result"></div>
+        </div>
+      </aside>
+    </div>
+    
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
