@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const { SocialNetwork } = require('./SocialNetwork');
 
 const app = express();
@@ -169,6 +170,16 @@ app.delete('/api/friends', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
+// Serve the static files from the Vite frontend build
+const frontendDistPath = path.join(__dirname, '../frontend/dist');
+app.use(express.static(frontendDistPath));
+
+// Catch-all route to serve index.html for client-side routing
+app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendDistPath, 'index.html'));
+});
+
 app.listen(PORT, () => {
     console.log(`Pure JS Backend running on http://localhost:${PORT}`);
 });
